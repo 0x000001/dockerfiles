@@ -11,7 +11,8 @@ RUN set -xe \
     && mv /etc/ssh /root/.ssh/ssh \
     && ln -s /root/.ssh/ssh /etc/ssh \
     && apk add --no-cache curl \
-    && curl https://raw.githubusercontent.com/0x000001/dockerfiles/master/openssh_alpine/entrypoint.sh    >>/entrypoint.sh
+    && curl https://raw.githubusercontent.com/0x000001/dockerfiles/master/openssh_alpine/entrypoint.sh    >>/entrypoint.sh \
+    &&chmod +x ./entrypoint.sh
 
 
 WORKDIR /root
