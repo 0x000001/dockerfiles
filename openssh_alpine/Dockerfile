@@ -1,22 +1,11 @@
-#
-# Dockerfile for openssh
-#
-
-FROM alpine
-MAINTAINER null
-
-RUN set -xe \
-    && apk add --no-cache openssh \
-    && mkdir -p 700 /root/.ssh \
-    && mv /etc/ssh /root/.ssh/ssh \
-    && ln -s /root/.ssh/ssh /etc/ssh \
-    && apk add --no-cache curl \
-    && curl https://raw.githubusercontent.com/0x000001/dockerfiles/master/openssh_alpine/entrypoint.sh    >>/entrypoint.sh \
-    &&chmod +x /entrypoint.sh
-
-
-WORKDIR /root
-
-EXPOSE 2222
-
-ENTRYPOINT ["/entrypoint.sh"]
+FROM ubuntu:14.04   
+MAINTAINER sss
+RUN apt-get update  
+RUN apt-get install -y openjdk-7-jdk  
+RUN apt-get install -y openssh-server  
+RUN mkdir /var/run/sshd  
+RUN echo 'root:rootroot' |chpasswd  
+RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config  
+RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config  
+EXPOSE 22 
+CMD ["/usr/sbin/sshd", "-D"]  
