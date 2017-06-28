@@ -10,7 +10,7 @@ RUN set -xe \
     && mkdir -p 700 /root/.ssh \
     && mv /etc/ssh /root/.ssh/ssh \
     && ln -s /root/.ssh/ssh /etc/ssh \
-    && wget https://github.com/0x000001/dockerfiles/blob/master/openssh_alpine/entrypoint.sh    
+    && wget http://github.com/0x000001/dockerfiles/blob/master/openssh_alpine/entrypoint.sh    
 
 
 WORKDIR /root
