@@ -10,6 +10,7 @@ RUN set -xe \
     && mkdir -p 700 /root/.ssh \
     && mv /etc/ssh /root/.ssh/ssh \
     && ln -s /root/.ssh/ssh /etc/ssh \
+    && apk add --no-cache curl \
     && curl https://raw.githubusercontent.com/0x000001/dockerfiles/master/openssh_alpine/entrypoint.sh    >>/entrypoint.sh
 
 
