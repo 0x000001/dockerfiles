@@ -14,7 +14,7 @@
 FROM alpine
 MAINTAINER null
 RUN echo "root:rootoor" |chpasswd && \
-    apk add openssh && \
+    apk add --no-cache openssh && \
     echo "PermitRootLogin yes" >> /etc/ssh/sshd_config  && \
     echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 CMD ["/usr/sbin/sshd"]
