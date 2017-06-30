@@ -1,5 +1,5 @@
 ## notices and warmings
-when you firstly login user docker envirenment,do the following things
+when you firstly login the docker envirenment,do the following things
 * run passwd to change root password when first login 
 * modify sshd config to forbit password and generade key pairs to use key to login (it's more security) 
 ## todo
