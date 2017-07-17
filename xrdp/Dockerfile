@@ -1,2 +1,4 @@
 FROM rigormortiz/ubuntu-xrdp-mate:zesty
-RUN echo "root:rootoor" | chpasswd 
+RUN useradd -ms /bin/bash nullun
+RUN echo "nullun:rootoor" | chpasswd 
+RUN usermod -aG sudo nullun
