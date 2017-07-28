@@ -18,4 +18,6 @@ RUN echo "root:rootoor" |chpasswd && \
     ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key &&\
     echo "PermitRootLogin yes" >> /etc/ssh/sshd_config  && \
     echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+RUN apk update && apk add wget
 CMD ["/usr/sbin/sshd","-D"]
+EXPOSE 22
