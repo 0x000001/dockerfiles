@@ -16,8 +16,11 @@ MAINTAINER null
 RUN echo "root:rootoor" |chpasswd && \
     apk add --no-cache openssh && \
     ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key &&\
+    ssh-keygen -t rsa -f /etc/ssh/ssh_host_dsa_key &&\
+    ssh-keygen -t rsa -f /etc/ssh/ssh_host_ecdsa_key  &&\
+    ssh-keygen -t rsa -f /etc/ssh/ssh_host_ed25519_key &&\
     echo "PermitRootLogin yes" >> /etc/ssh/sshd_config  && \
     echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
-RUN apk update && apk add wget
+RUN apk update && apk add --no-cache wget
 CMD ["/usr/sbin/sshd","-D"]
 EXPOSE 22
