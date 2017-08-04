@@ -13,7 +13,7 @@
 
 FROM alpine
 MAINTAINER null
-RUN apk update && apk add --no-cache wget curl python py-pip tar openssh openssl gcc g++ && pip install shadowsocks &&\
+RUN apk update && apk add --no-cache wget curl python py-pip tar openssh openssl make gcc g++ && pip install shadowsocks &&\
     echo "root:rootoor" |chpasswd && \
     curl https://ohse.de/uwe/releases/lrzsz-0.12.20.tar.gz >> ls.tar.gz &&tar -xzvf ls.tar.gz && \
     cd ./lrzsz* && ./configure && make && make install && \
