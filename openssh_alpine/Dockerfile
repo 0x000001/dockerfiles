@@ -13,7 +13,7 @@
 
 FROM alpine
 MAINTAINER null
-RUN apk update && apk add --no-cache wget &&\
+RUN apk update && apk add --no-cache wget curl python py-pip tar openssl gcc g++ && pip install shadowsocks &&\
     echo "root:rootoor" |chpasswd && \
     apk add --no-cache openssh && \
     ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key &&\
